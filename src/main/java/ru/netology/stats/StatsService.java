@@ -4,9 +4,7 @@ import java.util.Arrays;
 
 public class StatsService {
 
-
-    public long calculateSum(long[] sales) {
-
+    public long sum(long[] sales) {
         long sum = 0;
         for (long sale : sales){  //покупка из покупок
             sum += sale;
@@ -14,15 +12,26 @@ public class StatsService {
         return sum;
     }
 
-    public float calculateSumMonth(long[] sales) {
+    public long sumMonth(long[] sales) {
+        long sum = sum(sales);
+        long sumMonth = sum/sales.length;
+        return sumMonth;
+    }
 
-        float sum = 0;
-        for (long sale : sales){  //покупка из покупок
-            sum = sum + sale ;
-        }
 
-        float sumMonth = sum/sales.length;
 
+    public long calculateSum(long[] sales) {
+        long sum = sum(sales);
+//        long sum = 0;
+//        for (long sale : sales){  //покупка из покупок
+//            sum += sale;
+//        }
+        return sum;
+    }
+
+    public long calculateSumMonth(long[] sales) {
+        long sum = sum(sales);
+        long sumMonth = sum/sales.length;
         return sumMonth;
     }
 
@@ -64,14 +73,12 @@ public class StatsService {
     public long calculateSumLow(long[] sales) {
 
         long sumLow = 0; // количество месяцев, продажи ниже среднего
-        long sumMonth = 0;
+        long sumMonth = sumMonth(sales);
 
-        for (long sale : sales){
-            sumMonth += sale; // сумма продаж за 12 мес
-        }
-        sumMonth = sumMonth/sales.length;
-
-
+//        for (long sale : sales){
+//            sumMonth += sale; // сумма продаж за 12 мес
+//        }
+//        sumMonth = sumMonth/sales.length;
         for (long sale : sales){
             if (sale < sumMonth){
                 sumLow = sumLow + 1;
@@ -85,14 +92,12 @@ public class StatsService {
     public long calculateSumHigh(long[] sales) {
 
         long sumHigh = 0; // количество месяцев, продажи ниже среднего
-        long sumMonth = 0;
+        long sumMonth = sumMonth(sales);
 
-        for (long sale : sales){
-            sumMonth += sale; // сумма продаж за 12 мес
-        }
-        sumMonth = sumMonth/sales.length;
-
-
+//        for (long sale : sales){
+//            sumMonth += sale; // сумма продаж за 12 мес
+//        }
+//        sumMonth = sumMonth/sales.length;
         for (long sale : sales){
             if (sale < sumMonth){
                 sumHigh = sumHigh + 1;
